@@ -7,9 +7,9 @@ function Movie() {
     const [movie, setMovie] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:300/movies/${id}`)
+        axios.get(`http://localhost:3000/movies/${id}`)
             .then(res => setMovie(res.data))
-            .catch(err => console.err('Errore nel caricamento del film:', err));
+            .catch(err => console.error('Errore nel caricamento del film:', err));
     }, [id]);
 
     if (!movie) return <p>Caricamento...</p>;
