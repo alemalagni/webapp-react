@@ -17,9 +17,9 @@ function Movie() {
     return (
         <div>
             <h1>{movie.title}</h1>
-            <p><strong>Regista:</strong></p>
-            <p><strong>Genere:</strong></p>
-            <p><strong>Anno:</strong></p>
+            <p>Regista: <strong>{movie.director}</strong></p>
+            <p>Genere: <strong>{movie.genre}</strong></p>
+            <p>Anno: <strong>{movie.release_year}</strong></p>
             <p>{movie.abstract}</p>
             {movie.image && (
                 <img src={movie.image} alt={movie.title} className='img-fluid mb4' />
