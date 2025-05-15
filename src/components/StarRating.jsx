@@ -1,4 +1,4 @@
-function StarRating() {
+function StarRating({ rating }) {
     const fullStar = '★';
     const emptyStar = '☆'
 
@@ -8,7 +8,7 @@ function StarRating() {
                 <span key={i}>
                     {i < rating ? fullStar : emptyStar}
                 </span>
-            ))};
+            ))}
         </span>
     );
 }
