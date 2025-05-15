@@ -22,6 +22,15 @@ function ReviewForm({ movieId }) {
             alert('Errore nel salvataggio della recensione.')
         }
     };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <input value={name} onChange={e => setName(e.target.value)} placeholder='Nome' required />
+            <input type="number" value={vote} onChange={e => setVote(Number(e.target.value))} min='1' max='5' required />
+            <textarea value={text} onChange={e => setText(e.target.value)} placeholder='Testo' />
+            <button type='submit'>Invia recensione</button>
+        </form>
+    );
 }
 
 export default ReviewForm;
