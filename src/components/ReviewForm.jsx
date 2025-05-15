@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 
-function ReviewForm({ movieId }) {
+function ReviewForm({ movieId, onReviewAdded }) {
     const [name, setName] = useState('');
     const [vote, setVote] = useState(5);
     const [text, setText] = useState('');
@@ -17,6 +17,11 @@ function ReviewForm({ movieId }) {
             });
 
             alert('Recensione inviata!')
+            setName('');
+            setVote(5);
+            setText('');
+
+            if (onReviewAdded) onReviewAdded();
         } catch (err) {
             console.error('Errore nel salvataggio:', err);
             alert('Errore nel salvataggio della recensione.')
