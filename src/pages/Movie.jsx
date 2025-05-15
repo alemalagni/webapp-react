@@ -33,7 +33,7 @@ function Movie() {
                 <ul className='list-group'>
                     {movie.reviews.map(review => (
                         <li key={review.id} className='list-group-item'>
-                            <strong>{review.name}</strong> - Voto: {review.vote}/5
+                            <strong>{review.name}</strong> - <StarRating rating={review.vote} />
                             <p>{review.text}</p>
                         </li>
                     ))}
