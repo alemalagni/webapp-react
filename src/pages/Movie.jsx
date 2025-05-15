@@ -7,20 +7,18 @@ import ReviewForm from '../components/ReviewForm';
 function Movie() {
     const { id } = useParams();
     const [movie, setMovie] = useState(null);
-    const [reviews, setReviews] = useState([]);
 
-    const fetchReviews = async () => {
+    const fetchMovie = async () => {
         try {
             const res = await axios.get(`http://localhost:3000/movies/${id}`);
             setMovie(res.data.movie);
-            setReviews(res.data.reviews);
         } catch (error) {
             console.error('Errore nel caricamento:', error);
         }
     };
 
     useEffect(() => {
-        fetchReviews();
+        fetchMovie();
     }, [id]);
 
     if (!movie) return <p>Caricamento...</p>;
@@ -37,11 +35,11 @@ function Movie() {
             )}
 
             <h3 className='mt-5'>Recensioni</h3>
-            {reviews.length === 0 ? (
+            {movie.reviews.length === 0 ? (
                 <p>Nessuna recensione disponibile</p>
             ) : (
                 <ul className='list-group'>
-                    {reviews.map(review => (
+                    {movie.reviews.map(review => (
                         <li key={review.id} className='list-group-item'>
                             <strong>{review.name}</strong> – <StarRating rating={review.vote} />
                             <p>{review.text}</p>
@@ -51,7 +49,7 @@ function Movie() {
             )}
 
             <h4 className='mt-4'>Lascia una recensione</h4>
-            <ReviewForm movieId={movie.id} onReviewAdded={fetchReviews} />
+            <ReviewForm movieId={movie.id} onReviewAdded={fetchMovie} />
         </div>
     );
 }
