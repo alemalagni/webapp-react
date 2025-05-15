@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import StarRating from '../components/StarRating';
+import ReviewForm from '../components/ReviewForm';
 
 function Movie() {
     const { id } = useParams();
@@ -39,6 +40,8 @@ function Movie() {
                     ))}
                 </ul>
             )}
+
+            <ReviewForm movieId={movie.id} onReviewAdded={fetchReviews} />
         </div>
     );
 }
